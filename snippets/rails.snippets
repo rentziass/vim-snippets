@@ -81,6 +81,57 @@ snippet defnew
 			format.xml  { render xml: @$1 }
 		end
 	end
+snippet contr
+	class ${1:Entities}Controller < ${2:InheritanceClass}Controller
+	end
+snippet controller
+	class ${1:Entities}Controller < ${2:InheritanceClass}Controller
+		before_action :set_${3:resource}, only: [:show, :edit, :update, :destroy]
+
+		def show
+		end
+
+		def edit
+		end
+
+		def new
+			@$3 = ${4:class}
+		end
+
+		def create
+			@$3 = $4.new $3_params
+			if @$3.save
+				redirect_to ${5:path}, notice: "${6:create_notice}"
+			else
+				render :new
+			end
+		end
+
+		def index
+			@${7:resources} = $4.all
+		end
+
+		def update
+			@$3 = $4.new $3_params
+			if @$3.update $3_params
+				redirect_to ${8:update_redirect_path}, notice: "${9:update_notice}"
+			else
+				render :edit
+			end
+		end
+
+		private
+
+		def set_$3
+			@$3 = $4.find params[:id]
+		end
+
+		def $3_params
+			params.require(:$3).permit(
+				${10:params}
+			)
+		end
+	end
 snippet defshow
 	def show
 		@${1:model_class_name} = ${2:ModelClassName}.find(params[:id])

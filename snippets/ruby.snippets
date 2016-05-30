@@ -666,7 +666,7 @@ snippet mthrow
 #     Rspec snippets     #
 ##########################
 snippet desc
-	describe ${1:`substitute(substitute(vim_snippets#Filename(), '_spec$', '', ''), '\(_\|^\)\(.\)', '\u\2', 'g')`} do
+	describe "${1:`substitute(substitute(vim_snippets#Filename(), '_spec$', '', ''), '\(_\|^\)\(.\)', '\u\2', 'g')`}" do
 		${0}
 	end
 snippet descm
@@ -674,7 +674,7 @@ snippet descm
 		${0:pending 'Not implemented'}
 	end
 snippet cont
-	context '${1:message}' do
+	context "${1:message}" do
 		${0}
 	end
 snippet bef
@@ -690,7 +690,7 @@ snippet let
 snippet let!
 	let!(:${1:object}) { ${0} }
 snippet subj
-	subject { ${0} }
+	subject(:${1:subject}) { ${0} }
 snippet s.
 	subject.${0:method}
 snippet spec
@@ -706,7 +706,7 @@ snippet shared
 snippet ibl
 	it_behaves_like ${0:'shared examples name'}
 snippet it
-	it '${1:spec_name}' do
+	it "${1:spec_name}" do
 		${0}
 	end
 snippet its
