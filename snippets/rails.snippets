@@ -95,7 +95,7 @@ snippet controller
 		end
 
 		def new
-			@$3 = ${4:class}
+			@$3 = ${4:class}.new
 		end
 
 		def create
@@ -112,7 +112,6 @@ snippet controller
 		end
 
 		def update
-			@$3 = $4.new $3_params
 			if @$3.update $3_params
 				redirect_to ${8:update_redirect_path}, notice: "${9:update_notice}"
 			else
